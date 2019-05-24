@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+    skip_before_action :verify_authenticity_token
+
     def getPage
         page = Page.find_by("cur_pageId": params[:pageId], "story_id": params[:storyId])
         childrenPage = Page.where("parent_id": params[:pageId]) 
